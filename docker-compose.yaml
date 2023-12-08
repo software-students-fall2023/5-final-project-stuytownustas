@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  app:
+  db:
+    image: mongo:4.0-xenial # use a recent version of the official MongoDB image on Docker Hub
+    ports:
+      - 27017:27017 # map port 27017 of host machine to port 27017 of container
+    volumes:
+      - ./db:/data/db # a directory on the host machine where the data in the container's database will be stored
