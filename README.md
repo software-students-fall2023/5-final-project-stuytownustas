@@ -1,5 +1,11 @@
 # Final Project
 
+Run the task management tool using the below command.
+```
+docker compose up --build
+```
+
+
 Helpful tip: If your docker is not working for some reason, run the following command to check docker storage usage.
 ```
 docker system df
