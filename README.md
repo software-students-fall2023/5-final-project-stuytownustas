@@ -1,5 +1,15 @@
 # Final Project
 
+Helpful tip: If your docker is not working for some reason, run the following command to check docker storage usage.
+```
+docker system df
+```
+If it is necessary to free up space, AND YOU ARE OK WITH DELETING ALL CURRENT DOCKER IMAGES AND VOLUMES, run the following commands:
+```
+docker system prune
+docker volume prune
+```
+
 An exercise to put to practice software development teamwork, subsystem communication, containers, deployment, and CI/CD pipelines. See [instructions](./instructions.md) for details.
 Certainly! Let's delve into a more detailed description of the **Task Management Tool** project, adapting the first subsystem to be a terminal-based Python application.
 
