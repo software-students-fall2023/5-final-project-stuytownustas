@@ -18,4 +18,4 @@ ENV MONGO_URI=""
 
 # Run app.py when the container launches
 # CMD ["python", "web_app.py"] sdfsf
-CMD ["python", "app.py"]
+CMD ["python", "-u", "app.py"]

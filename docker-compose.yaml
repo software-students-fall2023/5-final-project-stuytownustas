@@ -3,6 +3,8 @@ version: "3.8"
 services:
   app:
     build: ./
+    stdin_open: true # to get terminal input 
+    tty: true # for docker to become interactive
     depends_on:
       - db
     ports:
@@ -10,7 +12,8 @@ services:
     environment:
       MONGODB_URI: mongodb://mongodb:27017/
       MONGODB_DATABASE: task_database
-      MONGODB_COLLECTION: tasks
+      MONGODB_TASKS_COLLECTION: tasks
+      MONGODB_USERS_COLLECTION: users
   db:
     image: mongo:4.0-xenial # use a recent version of the official MongoDB image on Docker Hub
     container_name: mongodb
