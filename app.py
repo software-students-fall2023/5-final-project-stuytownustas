@@ -7,10 +7,10 @@ app = Flask(__name__)
 
 MONGO_URI= "mongodb://mongodb:27017"
 client = pymongo.MongoClient(os.getenv("MONGODB_URI"))
-task_database = client[os.getenv("MONGODB_DATABASE")]
-# task_database = client['task_database']
-tasks = task_database[os.getenv("MONGODB_COLLECTION")]
-# tasks = task_database['tasks']
+# task_database = client[os.getenv("MONGODB_DATABASE")]
+task_database = client['task_database']
+# tasks = task_database[os.getenv("MONGODB_COLLECTION")]
+tasks = task_database['tasks']
 
 
 def insert_task(title, description, priority, status, deadline):
@@ -20,7 +20,7 @@ insert_task("Do laundry", "do the laundry", "low", "in progress", "Dec 15")
 
 @app.route('/')
 def index():
-    return 'Welcome to the Flask MongoDB App!'
+    return render_template('index.html')
 
 @app.route('/tasks', methods=['GET', 'POST'])
 def manage_tasks():
