@@ -15,4 +15,4 @@ services:
     image: mongo:4.0-xenial # use a recent version of the official MongoDB image on Docker Hub
     container_name: mongodb
     ports:
-      - "27017:27017" # map port 27017 of host machine to port 27017 of container
+      - "27018:27018" # map port 27017 of host machine to port 27017 of container
