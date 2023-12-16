@@ -1,4 +1,4 @@
-![example workflow](https://github.com/software-students-fall2023/5-final-project-stuytownustas/actions/workflows/docker-image.yml)
+![Docker CI/CD](https://github.com/software-students-fall2023/5-final-project-stuytownustas/actions/workflows/docker-image.yml)
 
 # Final Project
 
