@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Tasks</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 20px;
+            background-color: #daa5e6;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1, p, ul, li, a, button {
+            text-align: center;
+        }
+        ul {
+            list-style-position: inside;
+        }
+    </style>
+</head>
+<body>
+    <h1>Delete Tasks</h1>
+
+    <h2>Current Tasks:</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.description }}
+                <form method="post" action="{{ url_for('delete_task', task_id=task._id) }}" style="display: inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
