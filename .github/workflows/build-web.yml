@@ -68,6 +68,8 @@ jobs:
           username: root
           key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
           script: |
+            echo 'docker-ce docker-ce/use-new-config select true' | debconf-set-selections
+            
             sudo apt-get update
             sudo apt-get install -y docker-compose
             docker-compose pull
