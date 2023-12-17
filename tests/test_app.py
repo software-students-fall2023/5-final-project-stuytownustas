@@ -31,6 +31,10 @@ def test_search_task(client):
         assert response.status_code == 200
         assert b'Test Task' in response.data
 
+
+# pytest test_app.py
+# pytest --cov=app --cov-report=term-missing
+
 # Test deleting a task
 def test_delete_task(client):
     # Assuming we have a task with a specific ID
