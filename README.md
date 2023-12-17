@@ -2,28 +2,7 @@
 
 # Final Project
 
-Pull Docker Image from ![Dockerhub](https://hub.docker.com/r/lukedocker12/finalproject).
-
-Run the task management tool using the below command.
-```
-docker compose up --build
-```
-
-
-Helpful tip: If your docker is not working for some reason, run the following command to check docker storage usage.
-```
-docker system df
-```
-If it is necessary to free up space, AND YOU ARE OK WITH DELETING ALL CURRENT DOCKER IMAGES AND VOLUMES, run the following commands:
-```
-docker system prune
-docker volume prune
-```
-
-An exercise to put to practice software development teamwork, subsystem communication, containers, deployment, and CI/CD pipelines. See [instructions](./instructions.md) for details.
-Certainly! Let's delve into a more detailed description of the **Task Management Tool** project, adapting the first subsystem to be a terminal-based Python application.
-
-### Project Overview: Task Management Tool
+### Project Description: Task Management Tool
 
 The Task Management Tool is designed to help teams organize, assign, and track tasks efficiently. It's particularly suited for small to medium-sized project teams looking for a simple yet effective way to manage their workflow.
 
@@ -48,4 +27,34 @@ The Task Management Tool is designed to help teams organize, assign, and track t
   - **MongoDB Collections:** Separate collections for tasks, users, and possibly task history for tracking changes.
   - **Data Modeling:** Schema design to efficiently store and retrieve task-related information.
   - **Integration:** Connects with the Python application through a driver like `pymongo`.
+ 
+### Project Members
+[Luke Bernstein](https://github.com/lnbernstein)
+
+[Charles Hu](https://github.com/comeom)
+
+[James Luo](https://github.com/jamesluo802)
+
+[Kevin Li](https://github.com/kevinli2260)
+
+
+### Configuration Instructions
+
+Pull Docker Image from Dockerhub: https://hub.docker.com/r/lukedocker12/finalproject.
+
+Run the task management tool using the below command.
+```
+docker compose up --build
+```
+
+Helpful tip: If your docker is not working for some reason, run the following command to check docker storage usage.
+```
+docker system df
+```
+If it is necessary to free up space, AND YOU ARE OK WITH DELETING ALL CURRENT DOCKER IMAGES AND VOLUMES, run the following commands:
+```
+docker system prune
+docker volume prune
+```
+
 
