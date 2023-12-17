@@ -2,6 +2,8 @@
 
 # Final Project
 
+Pull Docker Image from ![Dockerhub](https://hub.docker.com/r/lukedocker12/finalproject).
+
 Run the task management tool using the below command.
 ```
 docker compose up --build
