@@ -68,7 +68,6 @@ jobs:
           username: root
           key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
           script: |
-            cd $GITHUB_WORKSPACE
             export DEBIAN_FRONTEND=noninteractive
             
             sudo apt-get update
@@ -76,6 +75,7 @@ jobs:
             
             sudo apt-get update
             sudo apt-get install -y docker-compose
+            cd $GITHUB_WORKSPACE
             echo "Current directory:"
             pwd
             echo "Listing files in current directory:"
