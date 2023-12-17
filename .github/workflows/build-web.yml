@@ -68,7 +68,10 @@ jobs:
           username: root
           key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
           script: |
-            echo 'docker-ce docker-ce/use-new-config select true' | debconf-set-selections
+            export DEBIAN_FRONTEND=noninteractive
+            
+            sudo apt-get update
+            sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
             
             sudo apt-get update
             sudo apt-get install -y docker-compose
