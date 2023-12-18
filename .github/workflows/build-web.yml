@@ -72,5 +72,5 @@ jobs:
             else
                 cd 5-final-project-stuytownustas
                 git pull origin main
-
+            fi
             docker-compose up -d
