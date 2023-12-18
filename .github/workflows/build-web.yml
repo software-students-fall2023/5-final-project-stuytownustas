@@ -16,7 +16,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
@@ -32,7 +31,11 @@ jobs:
       #   run: |
       #     flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
       #     flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      - name: Test with pytest
+        run: |
+         cd tests && test_app.py
 
+      
       # - name: Run Tests with Coverage
       #   run: pytest --cov-config=.coveragerc --cov=./web_app/tests --cov-report=xml --cov-report=term-missing
 
@@ -52,7 +55,7 @@ jobs:
         run: |
           docker build -f Dockerfile -t lukedocker12/finalproject:latest .
           docker push lukedocker12/finalproject:latest
-
+    
       # - name: Build and Push MongoDB Docker Image
       #   run: |
       #     docker build -f mongodb/Dockerfile -t capks/pokemonmongodb:latest ./mongodb
@@ -75,3 +78,5 @@ jobs:
             docker image prune -f
             docker volume prune -f
             docker-compose up -d
+
+
