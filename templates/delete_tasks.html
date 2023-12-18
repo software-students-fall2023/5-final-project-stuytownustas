@@ -22,12 +22,13 @@
 </head>
 <body>
     <h1>Delete Tasks</h1>
-
+    <h2>Navigation</h2>
+    <h3><a href="/">Home Page</a> | <a href="/tasks">Tasks Page</a></h3>
     <h2>Current Tasks:</h2>
     <ul>
         {% for task in tasks %}
             <li>
-                {{ task.description }}
+                {{ task.title }} | {{ task.description }} | {{ task.status }} | {{ task.priority }} priority | {{ task.deadline }} due date
                 <form method="post" action="{{ url_for('delete_task', task_id=task._id) }}" style="display: inline;">
                     <button type="submit">Delete</button>
                 </form>

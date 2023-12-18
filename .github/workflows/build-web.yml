@@ -66,38 +66,28 @@ jobs:
         run: |
           docker build -f Dockerfile -t lukedocker12/finalproject:latest .
           docker push lukedocker12/finalproject:latest
-    
-      # - name: Build and Push MongoDB Docker Image
-      #   run: |
-      #     docker build -f mongodb/Dockerfile -t capks/pokemonmongodb:latest ./mongodb
-      #     docker push capks/pokemonmongodb:latest
+
 
       - name: List files in the GitHub Actions workspace
         run: ls -alh $GITHUB_WORKSPACE
         
 
-      # - name: Deploy to Digital Ocean
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ secrets.DIGITALOCEAN_DROPLET_IP }}
-      #     username: root
-      #     key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
-      #     script: |
-      #       export DEBIAN_FRONTEND=noninteractive
-            
-      #       sudo apt-get update
-      #       sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
-            
-      #       sudo apt-get update
-      #       sudo apt-get install -y docker-compose
-      #       cd $GITHUB_WORKSPACE
-      #       echo "Current directory:"
-      #       pwd
-      #       echo "Listing files in current directory:"
-      #       ls -l
-      #       docker-compose pull
-      #       docker-compose down
-      #       docker container prune -f
-      #       docker image prune -f
-      #       docker volume prune -f
-      #       docker-compose up -d
+      - name: Deploy to Digital Ocean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DIGITALOCEAN_DROPLET_IP }}
+          username: root
+          key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+          script: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose
+
+            if [ ! -d "5-final-project-stuytownustas" ]; then
+                git clone https://github.com/software-students-fall2023/5-final-project-stuytownustas.git
+                
+            else
+                cd 5-final-project-stuytownustas
+                git pull origin main
+
+            docker-compose up -d
+

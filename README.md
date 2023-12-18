@@ -2,33 +2,26 @@
 
 # Final Project
 
-### Project Description: Task Management Tool
+## Project Description: Task Management Tool
+The Task Management Tool is designed to help individuals organize, assign, and track tasks efficiently. It's particularly suited for tech-savvy individuals looking for a simple yet effective way to manage their workflow.
 
-The Task Management Tool is designed to help teams organize, assign, and track tasks efficiently. It's particularly suited for small to medium-sized project teams looking for a simple yet effective way to manage their workflow.
-
-#### Subsystem 1: Terminal-Based Python Application
+### Subsystem 1: Terminal-Based Python Application
 - **Functionality:** 
-  - **Task Management:** Create, view, edit, and delete tasks. Each task will have attributes like title, description, priority, status (e.g., pending, in-progress, completed), and deadlines.
-  - **User Management:** Add and manage team members. Assign tasks to specific members and track their progress.
-  - **Filtering and Searching:** Filter tasks based on different criteria (e.g., deadline, priority, assignee) and search for specific tasks.
-  - **Notifications:** Send reminders for upcoming deadlines or pending tasks.
+  - **Task Management:** Create, view, edit, and delete tasks. Each task will have attributes title, description, priority, status, and deadline.
 - **Implementation:** 
   - **Language:** Python.
-  - **Libraries:** Libraries like `click` or `argparse` for creating the command-line interface, `datetime` for handling dates, and possibly `sqlite3` for local data storage if needed before integration with MongoDB.
-  - **Design:** Command-line arguments and interactive prompts for user input. Output displayed in a formatted and readable manner.
-  - **Tests:** There should be pytests to test >80% of the code.
+  - **Design:** Interactive webpage for for user input and content display. Output displayed in a formatted and readable manner.
+  - **Tests:** Pytest is used to test >80% of the code.
 
-#### Subsystem 2: MongoDB Database
+### Subsystem 2: MongoDB Database
 - **Functionality:** 
-  - **Data Storage:** Stores all task-related data, including task details and user information.
-  - **Relationships:** Manages relationships between tasks and users, such as task assignments.
-  - **Scalability:** Capable of scaling to handle a larger number of tasks and users as the team grows.
+  - **Data Storage:** Stores all task-related data, including task details.
+  - **Scalability:** Capable of scaling to handle a larger number of tasks as the user's demands grows.
 - **Implementation:** 
   - **MongoDB Collections:** Separate collections for tasks, users, and possibly task history for tracking changes.
-  - **Data Modeling:** Schema design to efficiently store and retrieve task-related information.
   - **Integration:** Connects with the Python application through a driver like `pymongo`.
  
-### Project Members
+## Project Members
 [Luke Bernstein](https://github.com/lnbernstein)
 
 [Charles Hu](https://github.com/comeom)
