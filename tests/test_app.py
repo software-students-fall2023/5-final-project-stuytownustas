@@ -16,11 +16,20 @@ def test_index_route(client):
     assert response.status_code == 200
     assert b"Welcome to the StuyTown Task Manager!" in response.data
 
+# # Test adding a new task
+# def test_add_task(client):
+#     response = client.post('/tasks', data={'description': 'New Task'}, follow_redirects=True)
+#     assert response.status_code == 200
+#     assert b'New Task' in response.data
+
 # Test adding a new task
 def test_add_task(client):
-    response = client.post('/tasks', data={'description': 'New Task'}, follow_redirects=True)
-    assert response.status_code == 200
-    assert b'New Task' in response.data
+    with pytest.MonkeyPatch.context() as m:
+        m.setattr('pymongo.collection.Collection.insert_one', MagicMock(return_value={'_id': ObjectId()}))
+        response = client.post('/tasks', data={'description': 'New Task'}, follow_redirects=True)
+        assert response.status_code == 200
+        assert b'New Task' in response.data
+
 
 # Test searching for a task
 def test_search_task(client):
@@ -37,7 +46,16 @@ def test_search_task(client):
 
 # Test deleting a task
 def test_delete_task(client):
-    # Assuming we have a task with a specific ID
-    test_id = ObjectId()
-    response = client.post(f'/tasks/delete/{test_id}', follow_redirects=True)
-    assert response.status_code == 200
+    with pytest.MonkeyPatch.context() as m:
+        m.setattr('pymongo.collection.Collection.delete_one', MagicMock(return_value=True))
+        test_id = ObjectId()
+        response = client.post(f'/tasks/delete/{test_id}', follow_redirects=True)
+        assert response.status_code == 200
+
+
+# # Test deleting a task
+# def test_delete_task(client):
+#     # Assuming we have a task with a specific ID
+#     test_id = ObjectId()
+#     response = client.post(f'/tasks/delete/{test_id}', follow_redirects=True)
+#     assert response.status_code == 200
