@@ -68,21 +68,11 @@ jobs:
           username: root
           key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
           script: |
-            export DEBIAN_FRONTEND=noninteractive
-            
-            sudo apt-get update
-            sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+            -force-confnew" install docker-ce
             
             sudo apt-get update
             sudo apt-get install -y docker-compose
-            cd $GITHUB_WORKSPACE
-            echo "Current directory:"
-            pwd
-            echo "Listing files in current directory:"
-            ls -l
-            docker-compose pull
-            docker-compose down
-            docker container prune -f
-            docker image prune -f
-            docker volume prune -f
-            docker-compose up -d
+            cd /root/var/www/app
+            git clone https://github.com/software-students-fall2023/5-final-project-stuytownustas.git
+            
+            docker-compose up --build
