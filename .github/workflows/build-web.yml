@@ -76,28 +76,28 @@ jobs:
         run: ls -alh $GITHUB_WORKSPACE
         
 
-      - name: Deploy to Digital Ocean
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.DIGITALOCEAN_DROPLET_IP }}
-          username: root
-          key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
-          script: |
-            export DEBIAN_FRONTEND=noninteractive
+      # - name: Deploy to Digital Ocean
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.DIGITALOCEAN_DROPLET_IP }}
+      #     username: root
+      #     key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
+      #     script: |
+      #       export DEBIAN_FRONTEND=noninteractive
             
-            sudo apt-get update
-            sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+      #       sudo apt-get update
+      #       sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
             
-            sudo apt-get update
-            sudo apt-get install -y docker-compose
-            cd $GITHUB_WORKSPACE
-            echo "Current directory:"
-            pwd
-            echo "Listing files in current directory:"
-            ls -l
-            docker-compose pull
-            docker-compose down
-            docker container prune -f
-            docker image prune -f
-            docker volume prune -f
-            docker-compose up -d
+      #       sudo apt-get update
+      #       sudo apt-get install -y docker-compose
+      #       cd $GITHUB_WORKSPACE
+      #       echo "Current directory:"
+      #       pwd
+      #       echo "Listing files in current directory:"
+      #       ls -l
+      #       docker-compose pull
+      #       docker-compose down
+      #       docker container prune -f
+      #       docker image prune -f
+      #       docker volume prune -f
+      #       docker-compose up -d
