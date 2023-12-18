@@ -53,11 +53,6 @@ jobs:
           docker build -f Dockerfile -t lukedocker12/finalproject:latest .
           docker push lukedocker12/finalproject:latest
 
-      # - name: Build and Push MongoDB Docker Image
-      #   run: |
-      #     docker build -f mongodb/Dockerfile -t capks/pokemonmongodb:latest ./mongodb
-      #     docker push capks/pokemonmongodb:latest
-
       - name: List files in the GitHub Actions workspace
         run: ls -alh $GITHUB_WORKSPACE
         
@@ -70,7 +65,14 @@ jobs:
           script: |
             sudo apt-get update
             sudo apt-get install -y docker-compose
-            git clone https://github.com/software-students-fall2023/5-final-project-stuytownustas.git
-            cd 5-final-project-stuytownustas
-            
+
+            5-final-project-stuytownustas/
+
+            if [ ! -d "5-final-project-stuytownustas/" ]; then
+                git clone https://github.com/software-students-fall2023/5-final-project-stuytownustas.git
+                
+            else
+                cd 5-final-project-stuytownustas
+                git pull origin main
+
             docker-compose up -d
