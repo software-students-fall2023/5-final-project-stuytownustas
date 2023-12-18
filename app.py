@@ -13,11 +13,8 @@ task_database = client['task_database']
 # tasks = task_database[os.getenv("MONGODB_COLLECTION")]
 tasks = task_database['tasks']
 
-
 def insert_task(title, description, priority, status, deadline):
   tasks.insert_one({"title": title, "description": description, "priority": priority, "status": status, "deadline": deadline})
-
-insert_task("Do laundry", "do the laundry", "low", "in progress", "Dec 15")
 
 @app.route('/')
 def index():
