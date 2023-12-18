@@ -68,7 +68,7 @@ jobs:
 
             if [ ! -d "5-final-project-stuytownustas" ]; then
                 git clone https://github.com/software-students-fall2023/5-final-project-stuytownustas.git
-                
+                cd 5-final-project-stuytownustas
             else
                 cd 5-final-project-stuytownustas
                 git pull origin main
