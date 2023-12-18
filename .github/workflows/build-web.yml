@@ -70,7 +70,7 @@ jobs:
           script: |
             sudo apt-get update
             sudo apt-get install -y docker-compose
-            cd /root/var/www/app
             git clone https://github.com/software-students-fall2023/5-final-project-stuytownustas.git
+            cd 5-final-project-stuytownustas
             
             docker-compose up 
