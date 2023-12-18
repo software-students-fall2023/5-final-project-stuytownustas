@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import os
 import pymongo
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
@@ -30,7 +31,7 @@ def manage_tasks():
 
         # Query tasks based on the search query
         if search_query:
-            task_list = list(tasks.find({'description': {'$regex': search_query, '$options': 'i'}}))
+            task_list = list(tasks.find({'title': {'$regex': search_query, '$options': 'i'}}))
         else:
             task_list = list(tasks.find())
 
@@ -41,10 +42,24 @@ def manage_tasks():
         return render_template('tasks.html', tasks=task_list, search_query=search_query)
 
     elif request.method == 'POST':
-        data = request.form.get('description', '')
+        # data = request.form.get('description', '')
+        title = request.form.get('title', '')
+        description = request.form.get('description', '')
+        status = request.form.get('status', '')
+        priority = request.form.get('priority', '')
+        deadline = request.form.get('deadline', '')
 
-        if data:
-            task = {'description': data}
+        if title and description and status and priority and deadline:
+            task = {
+                'title': title,
+                'description': description,
+                'status': status,
+                'priority': priority,
+                'deadline': deadline
+            }
+
+        if task:
+            # task = {'description': data,}
             task_id = tasks.insert_one(task).inserted_id
             return redirect(url_for('manage_tasks'))
         else:
