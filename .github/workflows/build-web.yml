@@ -39,7 +39,7 @@ jobs:
       # - name: Run Tests with Coverage
       #   run: pytest --cov-config=.coveragerc --cov=./web_app/tests --cov-report=xml --cov-report=term-missing
       - name: Run Tests with Coverage
-      run: pytest --cov=app --cov-report=term-missing
+        run: pytest --cov=app --cov-report=term-missing
         
       # - name: Run tests with pytest
       #   env:
