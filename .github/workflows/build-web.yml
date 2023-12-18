@@ -75,4 +75,4 @@ jobs:
             cd /root/var/www/app
             git clone https://github.com/software-students-fall2023/5-final-project-stuytownustas.git
             
-            docker-compose up --build
+            docker-compose up -build
