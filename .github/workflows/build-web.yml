@@ -66,9 +66,7 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y docker-compose
 
-            5-final-project-stuytownustas/
-
-            if [ ! -d "5-final-project-stuytownustas/" ]; then
+            if [ ! -d "5-final-project-stuytownustas" ]; then
                 git clone https://github.com/software-students-fall2023/5-final-project-stuytownustas.git
                 
             else
