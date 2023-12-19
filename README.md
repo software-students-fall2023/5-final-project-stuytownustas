@@ -1,4 +1,5 @@
 ![Docker CI/CD](https://github.com/software-students-fall2023/5-final-project-stuytownustas/actions/workflows/docker-image.yml/badge.svg)
+![Deploy to Digital Ocean](https://github.com/software-students-fall2023/5-final-project-stuytownustas/actions/workflows/build-web.yml/badge.svg)
 
 # Final Project
 
