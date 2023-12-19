@@ -51,4 +51,8 @@ docker system prune
 docker volume prune
 ```
 
+### Test Coverage
+<img width="485" alt="image" src="https://github.com/software-students-fall2023/5-final-project-stuytownustas/assets/113143931/6420a2ca-e821-421c-a1c5-2c1e18b3b49b">
+
+
 
