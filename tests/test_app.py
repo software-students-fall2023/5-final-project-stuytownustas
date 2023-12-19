@@ -18,7 +18,14 @@ def test_index_route(client):
 
 # Test adding a new task
 def test_add_task(client):
-    response = client.post('/tasks', data={'description': 'New Task'}, follow_redirects=True)
+    task_data = {
+        'title': 'New Task Title',
+        'description': 'New Task Description',
+        'status': 'Not Started',
+        'priority': 'High',
+        'deadline': '2023-12-31' 
+    }
+    response = client.post('/tasks', data= task_data, follow_redirects=True)
     assert response.status_code == 200
     assert b'New Task' in response.data
 
@@ -30,11 +37,6 @@ def test_search_task(client):
         response = client.get('/tasks?search=Test')
         assert response.status_code == 200
         assert b'Test Task' in response.data
-
-
-# pytest test_app.py
-# pytest --cov=app --cov-report=term-missing
-
 
 # Test deleting a task
 def test_delete_task(client):
