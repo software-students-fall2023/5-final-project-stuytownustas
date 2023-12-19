@@ -1,3 +1,4 @@
+from bson import ObjectId
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import os
 import pymongo
@@ -5,8 +6,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-
-MONGO_URI= "mongodb://mongodb:27017"
+MONGO_URI = "mongodb://mongodb:27017"
 client = pymongo.MongoClient(os.getenv("MONGODB_URI"))
 # task_database = client[os.getenv("MONGODB_DATABASE")]
 task_database = client['task_database']
@@ -14,11 +14,17 @@ task_database = client['task_database']
 tasks = task_database['tasks']
 
 def insert_task(title, description, priority, status, deadline):
-  tasks.insert_one({"title": title, "description": description, "priority": priority, "status": status, "deadline": deadline})
+    tasks.insert_one(
+        {"title": title, "description": description, "priority": priority, "status": status, "deadline": deadline})
+
+insert_task("Do laundry", "do the laundry", "low", "in progress", "Dec 15")
+
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/tasks', methods=['GET', 'POST'])
 def manage_tasks():
@@ -61,12 +67,14 @@ def manage_tasks():
             return redirect(url_for('manage_tasks'))
         else:
             return jsonify({'error': 'Task description cannot be empty'}), 400
-        
+
+
 @app.route('/tasks/delete/<string:task_id>', methods=['POST'])
 def delete_task(task_id):
     task_id = ObjectId(task_id)
     tasks.delete_one({'_id': task_id})
     return redirect(url_for('manage_tasks'))
+
 
 @app.route('/tasks/delete-page')
 def delete_tasks_page():
@@ -78,9 +86,9 @@ def delete_tasks_page():
 
     return render_template('delete_tasks.html', tasks=task_list)
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0',port=5001)
 
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5001)
 
 # for x in tasks.find():
-  # print(x)
+# print(x)
