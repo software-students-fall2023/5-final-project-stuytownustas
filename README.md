@@ -34,6 +34,12 @@ The Task Management Tool is designed to help individuals organize, assign, and t
 
 ### Configuration Instructions
 
+## Digital Ocean:
+
+- The page requires no configuration, access it [here](http://104.236.3.37:5001/)!
+
+## Docker
+
 Pull Docker Image from Dockerhub: https://hub.docker.com/r/lukedocker12/finalproject.
 
 Run the task management tool using the below command.
